@@ -9,6 +9,7 @@ import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import PendingOutlinedIcon from '@mui/icons-material/PendingOutlined';
+import { Button } from "@mui/material";
 
 function Sidebar() {
   return (
@@ -25,6 +26,7 @@ function Sidebar() {
       <SidebarOption text="プロフィール" Icon={PersonOutlinedIcon} />
       <SidebarOption text="もっと見る" Icon={PendingOutlinedIcon} />
       {/* ツイートボタン */}
+      <Button variant="outlined" className="sidebar__tweet">ツイートする</Button>
     </div>
   );
 }
