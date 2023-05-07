@@ -10,6 +10,7 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import PendingOutlinedIcon from '@mui/icons-material/PendingOutlined';
 import { Button } from "@mui/material";
+import "./Sidebar.css";
 
 function Sidebar() {
   return (
