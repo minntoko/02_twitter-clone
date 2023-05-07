@@ -10,15 +10,16 @@
 .sidebar__twitterIcon {
   color: var(--twitter-color);
   font-size: 33px !important;
-  margin-bottom: 20px;
+  margin: 20px 0 0 7.5px;
 }
 
 .sidebar__tweet {
   background-color: var(--twitter-color) !important;
   color: #fff !important;
+  font-size: 20px !important;
   font-weight: 900 !important;
   border: none !important;
   border-radius: 30px !important;
   height: 50px;
-  width: 200px;
+  width: 233px;
 }
