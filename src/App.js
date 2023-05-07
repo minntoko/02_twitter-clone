@@ -1,9 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Sidevar from "./components/sidebar/Sidebar";
 
 function App() {
   return (
     <div className="App">
+      <Sidevar />
     </div>
   );
 }
