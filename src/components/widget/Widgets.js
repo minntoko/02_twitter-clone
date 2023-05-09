@@ -2,15 +2,19 @@ import { Search } from "@mui/icons-material";
 import React from "react";
 import {
   TwitterTimelineEmbed,
+  TwitterShareButton,
   TwitterTweetEmbed,
 } from "react-twitter-embed";
+import "./Widgets.css";
 
 function Widgets() {
   return (
     <div className="widgets">
-      <div className="widgets__search">
-        <Search className="widgets__searchIcon" />
-        <input type="text" placeholder="キーワード検索" />
+      <div className="widgets__serchContainer">
+        <div className="widgets__search">
+          <Search className="widgets__searchIcon" />
+          <input type="text" placeholder="キーワード検索" />
+        </div>
       </div>
 
       <div className="widgets__widgetContainer">
