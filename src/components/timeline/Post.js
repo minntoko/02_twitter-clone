@@ -3,26 +3,26 @@ import { Avatar } from '@mui/material'
 import React from 'react'
 import './Post.css'
 
-function Post() {
+function Post({ displayName, userName, verified, text, avatar, image }) {
   return (
     <div className='post'>
       <div className='post__avatar'>
-        <Avatar />
+        <Avatar src={avatar} />
       </div>
       <div className='post__content'>
         <div className='post__header'>
-          <h3>ITエンジニア</h3>
+          <h3>{displayName}</h3>
           <span className='post__special'>
-            <VerifiedUser className='post__badge' />
-            @it_engineer
+            {verified ? <VerifiedUser className='post__badge' /> : null}
+            @{userName}
           </span>
         </div>
         <div className='post__body'>
           <div className='post__description'>
-            <p>Reactを勉強中です。</p>
+            <p>{text}</p>
           </div>
           <div className='post__img'>
-            <img src="https://images.unsplash.com/photo-1533986690673-c50390c01cfa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
+            <img src={image} />
           </div>
         </div>
         <div className='post__footer'>

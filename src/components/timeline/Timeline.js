@@ -13,11 +13,14 @@ function Timeline() {
       {/* TweetBox */}
       <TweetBox />
       {/* Post */}
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      <Post
+        displayName="ITエンジニア"
+        userName="it_engineer"
+        verified={true}
+        text="初めてのツイート"
+        avatar="https://pbs.twimg.com/profile_images/1259823801967079425/EgoCaYUj.jpg"
+        image="https://images.unsplash.com/photo-1558126319-c9feecbf57ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80"
+      />
     </div>
   );
 }
