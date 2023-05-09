@@ -4,6 +4,10 @@
   overflow-y: scroll;
 }
 
+.widgets::-webkit-scrollbar {
+  display: none;
+}
+
 .widgets__serchContainer {
   position: sticky;
   top: 0px;
