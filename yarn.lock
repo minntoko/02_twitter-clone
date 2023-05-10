@@ -4569,11 +4569,6 @@ dotenv@^10.0.0:
   resolved "https://registry.npmjs.org/dotenv/-/dotenv-10.0.0.tgz"
   integrity sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==
 
-dotenv@^16.0.3:
-  version "16.0.3"
-  resolved "https://registry.npmjs.org/dotenv/-/dotenv-16.0.3.tgz"
-  integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
-
 duplexer@^0.1.2:
   version "0.1.2"
   resolved "https://registry.npmjs.org/duplexer/-/duplexer-0.1.2.tgz"
@@ -8449,6 +8444,11 @@ react-dev-utils@^12.0.1:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-env@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.npmjs.org/react-env/-/react-env-0.0.0.tgz"
+  integrity sha512-kaZymS9Rgh58AVNNCTf1EewJKnGYtNJagmt3+omw0EvCNXhUOcdEXRT4qTCL3EECBx1dCA+2moBRN9QLj9PxJw==
 
 react-error-overlay@^6.0.11:
   version "6.0.11"

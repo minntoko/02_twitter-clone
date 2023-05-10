@@ -24,12 +24,12 @@ function Widgets() {
         <TwitterTweetEmbed tweetId={"1650079992045527041"} />
         <TwitterTimelineEmbed
           sourceType="profile"
-          screenName="minntoko0822"
+          screenName="AppStoreJP"
           options={{ height: 400 }}
         />
         <TwitterShareButton
-          url={"https://twitter.com/minntoko0822"}
-          options={{ text: "#React勉強中", via: "minntoko0822" }}
+          url={"https://twitter.com/Apple"}
+          options={{ text: "#React勉強中", via: "Apple" }}
         />
       </div>
     </div>
