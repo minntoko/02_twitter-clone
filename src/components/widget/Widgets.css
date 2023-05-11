@@ -18,13 +18,13 @@
 .widgets__search {
   display: flex;
   align-items: center;
-  background-color: var(--twitter-background);
+  background-color: #eff3f4;
   padding: 10px;
   border-radius: 20px;
 }
 
 .widgets__search > input {
-  background-color: var(--twitter-background);
+  background-color: #eff3f4;
   flex: 1;
   border: none;
   outline: none;
@@ -39,7 +39,7 @@
 .widgets__widgetContainer {
   margin-top: 15px;
   padding: 15px;
-  background-color: #f5f8fa;
+  background-color: #f7f9f9;
   border-radius: 20px;
 }
 
