@@ -1,6 +1,6 @@
 import { Avatar, Button } from "@mui/material";
 import React, { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import db from "../../firebase";
 import "./TweetBox.css";
 
@@ -10,13 +10,14 @@ function TweetBox() {
 
   const sendTweet = (e) => {
     e.preventDefault();
-    addDoc(collection(db, "post"), {
+    addDoc(collection(db, "posts"), {
       displayName: "ITエンジニア",
       userName: "it_engineer",
       verified: true,
       text: tweetMessage,
       avatar: "https://pbs.twimg.com/profile_images/1259823801967079425/EgoCaYUj.jpg",
       image: tweetImage,
+      timestamp: serverTimestamp(),
     });
     setTweetMessage("");
   };
