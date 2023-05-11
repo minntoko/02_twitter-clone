@@ -27,10 +27,12 @@ function Widgets() {
           screenName="AppStoreJP"
           options={{ height: 400 }}
         />
-        <TwitterShareButton
-          url={"https://twitter.com/Apple"}
-          options={{ text: "#React勉強中", via: "Apple" }}
-        />
+        <div className="widgets__shareButton">
+          <TwitterShareButton
+            url={"https://twitter.com/Apple"}
+            options={{ text: "#React勉強中", via: "Apple" }}
+          />
+        </div>
       </div>
     </div>
   );

@@ -48,3 +48,7 @@
   font-weight: 800;
   margin: 0;
 }
+
+.widgets__shareButton {
+  margin-top: 20px;
+}
