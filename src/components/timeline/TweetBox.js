@@ -20,13 +20,14 @@ function TweetBox() {
       timestamp: serverTimestamp(),
     });
     setTweetMessage("");
+    setTweetImage("");
   };
 
   return (
     <div className="tweetBox">
       <form>
         <div className="tweetBox__input">
-          <Avatar />
+          <Avatar src="https://pbs.twimg.com/profile_images/1259823801967079425/EgoCaYUj.jpg" />
           <input
             type="text"
             placeholder="いまどうしてる？"
