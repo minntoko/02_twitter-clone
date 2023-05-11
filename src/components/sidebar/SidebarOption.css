@@ -15,10 +15,16 @@
 .sidebarOption > .MuiSvgIcon-root {
   padding: 0 5px;
   margin-left: 5px;
+  font-size: 1.8em;
 }
 
 .sidebarOption > h2 {
   font-size: 20px;
   margin: 0;
   padding: 12px;
+  font-weight: normal;
+}
+
+.sidebarOption.sidebarOption__active > h2 {
+  font-weight: bold;
 }
