@@ -21,9 +21,9 @@ function Post({ displayName, userName, verified, text, avatar, image }) {
           <div className='post__description'>
             <p>{text}</p>
           </div>
-          <div className='post__img'>
+          {image && <div className='post__img'>
             <img src={image} />
-          </div>
+          </div>}
         </div>
         <div className='post__footer'>
           <ChatBubbleOutlineRounded fontSize='small' />
