@@ -2,10 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./Timeline.css";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
-import { collection, getDocs, query, orderBy, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+} from "firebase/firestore";
 import db from "../../firebase";
+import FlipMove from "react-flip-move";
 
-function Timeline () {
+function Timeline() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -14,9 +20,9 @@ function Timeline () {
     const q = query(postData, orderBy("timestamp", "desc"));
     onSnapshot(q, (querySnapshot) => {
       setPosts(querySnapshot.docs.map((doc) => doc.data()));
-    })
-  }, [])
-  
+    });
+  }, []);
+
   return (
     <div className="timeline">
       {/* Header */}
@@ -26,17 +32,19 @@ function Timeline () {
       {/* TweetBox */}
       <TweetBox />
       {/* Post */}
-      {posts.map((post, index) => (
-        <Post
-          key={index}
-          displayName={post.displayName}
-          userName={post.userName}
-          verified={post.verified}
-          text={post.text}
-          avatar={post.avatar}
-          image={post.image}
-        />
-      ))}
+      <FlipMove>
+        {posts.map((post, index) => (
+          <Post
+            key={index}
+            displayName={post.displayName}
+            userName={post.userName}
+            verified={post.verified}
+            text={post.text}
+            avatar={post.avatar}
+            image={post.image}
+          />
+        ))}
+      </FlipMove>
     </div>
   );
 }
