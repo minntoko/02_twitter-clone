@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Timeline.css";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
@@ -8,11 +8,13 @@ import db from "../../firebase";
 function Timeline () {
   const [posts, setPosts] = useState([]);
 
-  const postData = collection(db, "post");
-  getDocs(postData).then((querySnapshot) => {
-    console.log(querySnapshot.docs.map((doc) => doc.data()));
-    setPosts(querySnapshot.docs.map((doc) => doc.data()));
-  });
+  useEffect(() => {
+    const postData = collection(db, "post");
+    getDocs(postData).then((querySnapshot) => {
+      setPosts(querySnapshot.docs.map((doc) => doc.data()));
+    });
+  }, [])
+  
   return (
     <div className="timeline">
       {/* Header */}
@@ -22,8 +24,9 @@ function Timeline () {
       {/* TweetBox */}
       <TweetBox />
       {/* Post */}
-      {posts.map((post) => (
+      {posts.map((post, index) => (
         <Post
+          key={index}
           displayName={post.displayName}
           userName={post.userName}
           verified={post.verified}
