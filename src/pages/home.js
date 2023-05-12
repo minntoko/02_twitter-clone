@@ -9,6 +9,7 @@ import Widgets from "../components/widget/Widgets";
 function Home() {
   const homeStyles = css`
     display: flex;
+    justify-content: center;
     height: 100vh;
     max-width: 1265px;
     margin: 0 auto;

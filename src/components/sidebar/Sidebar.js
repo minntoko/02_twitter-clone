@@ -9,6 +9,7 @@ import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import PendingOutlinedIcon from '@mui/icons-material/PendingOutlined';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import { Button } from "@mui/material";
 import "./Sidebar.css";
 
@@ -18,16 +19,18 @@ function Sidebar() {
       {/* ツイッターアイコン */}
       <TwitterIcon className="sidebar__twitterIcon" />
       {/* SidebarOption */}
-      <SidebarOption text="ホーム" Icon={HomeIcon} active />
-      <SidebarOption text="話題を検索" Icon={SearchIcon} />
-      <SidebarOption text="通知" Icon={NotificationsNoneIcon} />
-      <SidebarOption text="メッセージ" Icon={MailOutlineIcon} />
-      <SidebarOption text="リスト" Icon={ListAltOutlinedIcon} />
-      <SidebarOption text="ブックマーク" Icon={BookmarkBorderOutlinedIcon} />
-      <SidebarOption text="プロフィール" Icon={PersonOutlinedIcon} />
-      <SidebarOption text="もっと見る" Icon={PendingOutlinedIcon} />
+      <nav className="sidebar__nav">
+        <SidebarOption text="ホーム" Icon={HomeIcon} active />
+        <SidebarOption text="話題を検索" Icon={SearchIcon} />
+        <SidebarOption text="通知" Icon={NotificationsNoneIcon} />
+        <SidebarOption text="メッセージ" Icon={MailOutlineIcon} />
+        <SidebarOption text="リスト" Icon={ListAltOutlinedIcon} />
+        <SidebarOption text="ブックマーク" Icon={BookmarkBorderOutlinedIcon} />
+        <SidebarOption text="プロフィール" Icon={PersonOutlinedIcon} />
+        <SidebarOption text="もっと見る" Icon={PendingOutlinedIcon} />
+      </nav>
       {/* ツイートボタン */}
-      <Button variant="outlined" className="sidebar__tweet">ツイートする</Button>
+      <Button variant="outlined" className="sidebar__tweet"><AutoFixHighIcon className="sidebar__tweetIcon" /><p>ツイートする</p></Button>
     </div>
   );
 }

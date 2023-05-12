@@ -1,5 +1,6 @@
 .timeline {
-  flex: 6.3;
+  min-width: 598px;
+  max-width: 598px;
   margin-right: 30px;
   border-right: 1px solid var(--twitter-background);
   overflow-y: scroll;

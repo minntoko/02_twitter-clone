@@ -4,7 +4,8 @@
   cursor: pointer;
   border-radius: 50px;
   transition: all 0.15s;
-  margin: 5px 0;
+  padding: 12px;
+  margin: 4px 0;
 }
 
 .sidebarOption:hover {
@@ -13,17 +14,21 @@
 }
 
 .sidebarOption > .MuiSvgIcon-root {
-  padding-right: 5px;
   font-size: 1.8em;
 }
 
 .sidebarOption > h2 {
   font-size: 20px;
-  margin: 0;
-  padding: 12px;
+  margin: 0 20px;
   font-weight: normal;
 }
 
 .sidebarOption.sidebarOption__active > h2 {
   font-weight: bold;
+}
+
+@media (max-width: 1264px) {
+  .sidebarOption > h2 {
+    display: none;
+  }
 }
