@@ -8,6 +8,7 @@
   max-width: 259px;
   padding-left: 8px;
   padding-right: 8px;
+  transition: all .5s;
 }
 
 .sidebar__nav {
@@ -35,6 +36,8 @@
   font-weight: 900 !important;
   border: none !important;
   border-radius: 30px !important;
+  transition: all .5s !important;
+	white-space: nowrap;
 }
 
 .sidebar__tweetIcon {
