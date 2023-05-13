@@ -14,6 +14,9 @@ function Home() {
     max-width: 1265px;
     margin: 0 auto;
     padding: 0 10px;
+    @media (max-width: 1077px) {
+      padding: 0;
+    }
   `;
 
   return (
