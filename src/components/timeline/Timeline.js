@@ -42,6 +42,7 @@ function Timeline() {
             text={post.text}
             avatar={post.avatar}
             image={post.image}
+            className="timeline__post"
           />
         ))}
       </FlipMove>

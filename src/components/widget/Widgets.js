@@ -25,7 +25,8 @@ function Widgets() {
         <TwitterTimelineEmbed
           sourceType="profile"
           screenName="AppStoreJP"
-          options={{ height: 400 }}
+          options={{ height: 400, Width: 160 }}
+
         />
         <div className="widgets__shareButton">
           <TwitterShareButton
