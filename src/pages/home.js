@@ -17,10 +17,6 @@ function Home() {
     @media (max-width: 1077px) {
       padding: 0;
     }
-
-    @media (max-width: 500px) {
-      flex-direction: column-reverse;
-    }
   `;
 
   return (

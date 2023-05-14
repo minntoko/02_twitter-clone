@@ -29,6 +29,7 @@ function Sidebar() {
         <SidebarOption text="プロフィール" Icon={PersonOutlinedIcon} />
         <SidebarOption text="もっと見る" Icon={PendingOutlinedIcon} />
       </nav>
+      <div className="sidebar__blur"></div>
       {/* ツイートボタン */}
       <Button variant="outlined" className="sidebar__tweet"><AutoFixHighIcon className="sidebar__tweetIcon" /><p>ツイートする</p></Button>
     </div>
