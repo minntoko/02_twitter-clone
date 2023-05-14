@@ -44,3 +44,12 @@
     max-width: auto;
   }
 }
+
+@media (max-width: 600px) {
+  .timeline__header {
+    min-height: 30px;
+  }
+  .timeline__header h2 {
+    display: none;
+  }
+}

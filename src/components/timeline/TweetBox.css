@@ -44,14 +44,8 @@
   margin: 5px 20px 0 auto !important;
 }
 
-@media (max-width: 400px) {
-  .tweetBox__input > input {
-    font-size: 15px;
-  }
-  .tweetBox__buttons > .tweetBox__imageInput {
-    font-size: 9px;
-  }
-  .tweetBox__buttons > .tweetBox__tweetButton {
-    font-size: 9px;
+@media (max-width: 500px) {
+  .tweetBox {
+    display: none;
   }
 }
