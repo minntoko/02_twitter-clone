@@ -9,6 +9,11 @@
   padding-left: 8px;
   padding-right: 8px;
   transition: all .5s;
+  overflow-y: scroll;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .sidebar__nav {

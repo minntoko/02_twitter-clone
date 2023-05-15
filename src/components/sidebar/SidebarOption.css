@@ -61,4 +61,7 @@
   .sidebarOption:nth-of-type(5), .sidebarOption:nth-of-type(6), .sidebarOption:nth-of-type(7), .sidebarOption:nth-of-type(8) {
     display: none;
   }
+  .sidebarOption {
+    padding: 8px;
+  }
 }
