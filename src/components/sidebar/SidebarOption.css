@@ -31,6 +31,9 @@
 }
 
 @media (max-width: 1264px) {
+  .sidebarOption {
+    overflow: hidden;
+  }
   .sidebarOption > h2 {
     height: 0;
     width: 0;
@@ -55,6 +58,12 @@
     margin: 0;
   }
 
+  .sidebarOption:nth-of-type(5) > h2, .sidebarOption:nth-of-type(6) > h2 {
+    height: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+  }
 }
 
 @media (max-width: 500px) {
