@@ -5,7 +5,6 @@ import Sidevar from "../components/sidebar/Sidebar";
 import Timeline from "../components/timeline/Timeline";
 import Widgets from "../components/widget/Widgets";
 
-
 function Home() {
   const homeStyles = css`
     display: flex;
@@ -19,7 +18,8 @@ function Home() {
     }
     @media (max-width: 500px) {
       flex-direction: column-reverse;
-      overflow:hidden;
+      overflow: hidden;
+      overscroll-behavior-y: none;
     }
   `;
 

@@ -1,7 +1,7 @@
 .timeline {
   min-width: 598px;
   max-width: 598px;
-  margin-right: 30px;
+  margin: 54px 30px 0 0;
   border-right: 1px solid var(--twitter-background);
   overflow-y: scroll;
 }
@@ -11,8 +11,9 @@
 }
 
 .timeline__header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 575px;
   background-color: rgba(255, 255, 255, .8);
   backdrop-filter: blur(12px);
   z-index: 100;
@@ -51,5 +52,11 @@
   }
   .timeline__header h2 {
     display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .timeline {
+    margin: 54px 0 85px 0;
   }
 }
