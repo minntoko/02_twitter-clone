@@ -59,13 +59,45 @@
   color: gray;
 }
 
+.post__retweet {
+  cursor: pointer;
+}
+
+.post__like {
+  cursor: pointer;
+}
+
+.post__like:hover path {
+  fill: #f91a80;
+  cursor: pointer
+}
+
 .post__likeActive path {
   fill: #f91a80;
   fill-rule: "evenodd";
+  transform-origin:center center;
+  animation: iconAnimation 0.45s ease-in-out;
 }
 
 .post__retweetActive path {
   fill: rgb(0 186 124);
   stroke: rgb(0 186 124);
   stroke-width: 1;
+  transform-origin:center center;
+  animation: iconAnimation 0.45s ease-in-out;
+}
+
+@keyframes iconAnimation {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(.1);
+  }
+  70% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
