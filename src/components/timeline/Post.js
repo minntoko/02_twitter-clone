@@ -1,13 +1,10 @@
-import {
-  ChatBubbleOutlineRounded,
-  FileUploadOutlined,
-  FavoriteBorder,
-  Repeat,
-  VerifiedUser,
-} from "@mui/icons-material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { VerifiedUser } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 import React, { useState, forwardRef } from "react";
+import RetweetButton from "./buttons/RetweetButton";
+import LikeButton from "./buttons/LikeButton";
+import RepryButton from "./buttons/RepryButton";
+import ShareButton from "./buttons/ShareButton";
 import "./Post.css";
 
 const Post = forwardRef(
@@ -45,25 +42,10 @@ const Post = forwardRef(
             )}
           </div>
           <div className="post__footer">
-            <ChatBubbleOutlineRounded fontSize="small" />
-            <Repeat
-              fontSize="small"
-              className={`post__retweet ${
-                retweet ? "post__retweetActive" : ""
-              }`}
-              onClick={retweetSwitch}
-            />
-            <div
-              className={`post__like ${like ? "post__likeActive" : ""}`}
-              onClick={likeSwitch}
-            >
-              {like ? (
-                <FavoriteIcon fontSize="small" />
-                ) : (
-                <FavoriteBorder fontSize="small" />
-              )}
-            </div>
-            <FileUploadOutlined fontSize="small" />
+            <RepryButton />
+            <RetweetButton retweet={retweet} retweetSwitch={retweetSwitch} />
+            <LikeButton like={like} likeSwitch={likeSwitch} />
+            <ShareButton />
           </div>
         </div>
       </div>

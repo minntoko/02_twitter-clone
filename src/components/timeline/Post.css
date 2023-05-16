@@ -10,7 +10,7 @@
 
 .post__content {
   flex: 1;
-  padding: 15px 15px 15px 0;
+  padding: 15px 15px 10px 0;
 }
 
 .post__header {
@@ -63,11 +63,33 @@
   cursor: pointer;
 }
 
-.post__like {
+.post__repryButton, .post__retweetButton, .post__likeButton, .post__shareButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34.75px;
+  height: 34.75px;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-.post__like:hover path {
+.post__repryButton, .post__retweetButton, .post__likeButton, .post__shareButton path {
+  transition: .3s;
+}
+
+.post__repryButton:hover, .post__shareButton:hover {
+  background-color: #e4eef7;
+}
+
+.post__repryButton:hover path, .post__shareButton:hover path {
+  fill: var(--twitter-color);
+}
+
+.post__likeButton:hover {
+  background-color: #f9e3eb;
+}
+
+.post__likeButton:hover path {
   fill: #f91a80;
   cursor: pointer
 }
@@ -79,9 +101,18 @@
   animation: iconAnimation 0.45s ease-in-out;
 }
 
+.post__retweetButton:hover {
+  background-color: #e3f2eb;
+}
+
+.post__retweetButton:hover path {
+  fill: #00ba7c;
+  cursor: pointer
+}
+
 .post__retweetActive path {
-  fill: rgb(0 186 124);
-  stroke: rgb(0 186 124);
+  fill: #00ba7c;
+  stroke: #00ba7c;
   stroke-width: 1;
   transform-origin:center center;
   animation: iconAnimation 0.45s ease-in-out;
