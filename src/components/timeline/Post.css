@@ -58,3 +58,14 @@
   max-width: 433px;
   color: gray;
 }
+
+.post__likeActive path {
+  fill: #f91a80;
+  fill-rule: "evenodd";
+}
+
+.post__retweetActive path {
+  fill: rgb(0 186 124);
+  stroke: rgb(0 186 124);
+  stroke-width: 1;
+}
