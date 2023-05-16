@@ -9,7 +9,13 @@
   margin: 4px 0;
 }
 
-.sidebarOption:hover {
+.sidebarOption__box {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.sidebarOption__box:hover .sidebarOption {
   opacity: 0.8;
   background-color: var(--twitter-background);
 }
