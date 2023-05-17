@@ -1,4 +1,5 @@
 import { ChatBubbleOutlineRounded } from "@mui/icons-material";
+import "./Buttons.css";
 
 const RepryButton = () => {
   return (

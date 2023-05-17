@@ -1,4 +1,5 @@
 import { Repeat } from "@mui/icons-material";
+import "./Buttons.css";
 
 const RetweetButton = ({ retweet, retweetSwitch }) => {
   return (

@@ -1,4 +1,5 @@
 import { FileUploadOutlined } from "@mui/icons-material";
+import "./Buttons.css";
 
 const ShareButton = () => {
   return (
