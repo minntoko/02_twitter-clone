@@ -8,7 +8,7 @@ import ShareButton from "./buttons/ShareButton";
 import "./Post.css";
 
 const Post = forwardRef(
-  ({ displayName, userName, verified, text, avatar, image }, ref) => {
+  ({ displayName, userName, verified, text, avatar, image, like_count, retweet_count }, ref) => {
     // useStateでいいねの状態を保持
     const [like, setLike] = useState(false);
     const [retweet, setRetweet] = useState(false);
@@ -43,8 +43,8 @@ const Post = forwardRef(
           </div>
           <div className="post__footer">
             <RepryButton />
-            <RetweetButton retweet={retweet} retweetSwitch={retweetSwitch} />
-            <LikeButton like={like} likeSwitch={likeSwitch} />
+            <RetweetButton retweet={retweet} retweetSwitch={retweetSwitch} retweet_count={retweet_count} />
+            <LikeButton like={like} likeSwitch={likeSwitch} like_count={like_count} />
             <ShareButton />
           </div>
         </div>
