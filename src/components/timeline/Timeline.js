@@ -17,27 +17,34 @@ function Timeline() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    // ここでツイートとユーザー情報を取得する処理を書く
     const tweetsRef = collection(db, "tweets");
     const q = query(tweetsRef, orderBy("created_at", "desc"));
-    // ツイートドキュメントのリアルタイムリスナーを設定
-    onSnapshot(q, (queryTweets) => {
-      setPosts(
-        queryTweets.docs.map(async (doc) => {
-          const tweet = doc.data();
-          const tweetId = doc.id;
-
-          // ユーザー情報を取得する
-          const user = collection(db, "users");
-          const tweetQ = query(user, where("user_id", "==", tweet.user_id));
-          const userSnapshot = await getDocs(tweetQ);
-          const userData = userSnapshot.docs.map((doc) => doc.data());
-          return { ...tweet, ...userData[0], tweet_id: tweetId };
-        })
-      );
+  
+    onSnapshot(q, async (queryTweets) => {
+      const newTweetPromises = queryTweets.docs.map(async (doc) => {
+        const tweet = doc.data();
+        const tweetId = doc.id;
+  
+        const userRef = collection(db, "users");
+        const tweetQ = query(userRef, where("user_id", "==", tweet.user_id));
+        const userSnapshot = await getDocs(tweetQ);
+        const userData = userSnapshot.docs.map((doc) => doc.data());
+        console.log(userData[0]);
+        return {
+          id: tweetId,
+          displayName: userData[0].displayName,
+          userName: userData[0].user_id,
+          verified: userData[0].verified,
+          text: tweet.text,
+          image: tweet.image,
+          icon: userData[0].icon,
+        };
+      });
+  
+      const newTweets = await Promise.all(newTweetPromises);
+      setPosts(newTweets);
     });
   }, []);
-  console.log(posts);
 
   return (
     <div className="timeline">
