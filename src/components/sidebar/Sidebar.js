@@ -20,14 +20,14 @@ function Sidebar() {
       <TwitterIcon className="sidebar__twitterIcon" />
       {/* SidebarOption */}
       <nav className="sidebar__nav">
-        <SidebarOption text="ホーム" Icon={HomeIcon} active />
-        <SidebarOption text="話題を検索" Icon={SearchIcon} />
-        <SidebarOption text="通知" Icon={NotificationsNoneIcon} />
-        <SidebarOption text="メッセージ" Icon={MailOutlineIcon} />
-        <SidebarOption text="リスト" Icon={ListAltOutlinedIcon} />
-        <SidebarOption text="ブックマーク" Icon={BookmarkBorderOutlinedIcon} />
-        <SidebarOption text="プロフィール" Icon={PersonOutlinedIcon} />
-        <SidebarOption text="もっと見る" Icon={PendingOutlinedIcon} />
+        <SidebarOption text="ホーム" Icon={HomeIcon} route="/" active />
+        <SidebarOption text="話題を検索" Icon={SearchIcon} route="/" />
+        <SidebarOption text="通知" Icon={NotificationsNoneIcon} route="/" />
+        <SidebarOption text="メッセージ" Icon={MailOutlineIcon} route="/" />
+        <SidebarOption text="リスト" Icon={ListAltOutlinedIcon} route="/" />
+        <SidebarOption text="ブックマーク" Icon={BookmarkBorderOutlinedIcon} route="/" />
+        <SidebarOption text="プロフィール" Icon={PersonOutlinedIcon} route="profile" />
+        <SidebarOption text="もっと見る" Icon={PendingOutlinedIcon} route="/" />
       </nav>
       {/* ツイートボタン */}
       <Button variant="outlined" className="sidebar__tweet"><AutoFixHighIcon className="sidebar__tweetIcon" /><p>ツイートする</p></Button>

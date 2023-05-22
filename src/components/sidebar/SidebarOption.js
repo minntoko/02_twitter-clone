@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./SidebarOption.css";
 
-function SidebarOption({ text, Icon, active }) {
+function SidebarOption({ text, Icon, route, active }) {
   return (
-    <div className="sidebarOption__box">
+    <Link to={route} className="sidebarOption__box">
       <div className={`sidebarOption ${active && "sidebarOption__active"}`}>
         <Icon />
         <h2>{text}</h2>
       </div>
-    </div>
+    </Link>
   );
 }
 
