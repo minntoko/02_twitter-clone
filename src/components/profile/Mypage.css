@@ -1,0 +1,7 @@
+.mypage {
+  min-width: 598px;
+  max-width: 598px;
+  margin: 0 30px 0 0;
+  border-right: 1px solid var(--twitter-background);
+  overflow-y: scroll;
+}
