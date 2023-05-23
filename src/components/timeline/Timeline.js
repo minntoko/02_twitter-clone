@@ -29,9 +29,9 @@ function Timeline() {
         const tweetQ = query(userRef, where("user_id", "==", tweet.user_id));
         const userSnapshot = await getDocs(tweetQ);
         const userData = userSnapshot.docs.map((doc) => doc.data());
-        console.log(userData[0]);
         return {
-          id: tweetId,
+          tweetId: tweetId,
+          userId: tweet.user_id,
           displayName: userData[0].displayName,
           userName: userData[0].user_id,
           verified: userData[0].verified,
@@ -57,16 +57,17 @@ function Timeline() {
       {/* Post */}
       <FlipMove>
         {posts.map((post, index) => (
+          console.log(post),
           <Post
             key={index}
+            id={post.tweetId}
+            userId={post.userId}
             displayName={post.displayName}
             userName={post.userName}
             verified={post.verified}
             text={post.text}
             avatar={post.icon}
             image={post.image}
-            like_count={0}
-            retweet_count={2}
             className="timeline__post"
           />
         ))}

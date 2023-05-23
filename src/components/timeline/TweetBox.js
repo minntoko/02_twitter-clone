@@ -1,6 +1,14 @@
 import { Avatar, Button } from "@mui/material";
-import React, { useState } from "react";
-import { collection, doc, setDoc, serverTimestamp, query, where, getDocs } from "firebase/firestore";
+import React, { useState, useEffect } from "react";
+import {
+  collection,
+  doc,
+  setDoc,
+  serverTimestamp,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 import db from "../../firebase";
 import "./TweetBox.css";
@@ -13,24 +21,26 @@ function TweetBox() {
   const [userData, setUserData] = useState({});
 
   // ユーザー情報を取得する
-  const getUserData = async () => {
-    const user = collection(db, "users");
-    const q = query(user, where("user_id", "==", user_id));
-    const userSnapshot = await getDocs(q);
-    const userData = userSnapshot.docs.map((doc) => doc.data());
-    setUserData(userData[0]);
-  };
-  getUserData();
-
+  useEffect(() => {
+    const getUserData = async () => {
+      const user = collection(db, "users");
+      const q = query(user, where("user_id", "==", user_id));
+      const userSnapshot = await getDocs(q);
+      const userData = userSnapshot.docs.map((doc) => doc.data());
+      setUserData(userData[0]);
+    };
+    getUserData();
+  }, [])
+  
   const sendTweet = (e) => {
     const tweet_id = uuidv4();
     e.preventDefault();
-    const tweetRef = doc(db, 'tweets', tweet_id);
+    const tweetRef = doc(db, "tweets", tweet_id);
     setDoc(tweetRef, {
       user_id: user_id,
       text: tweetMessage,
       image: tweetImage,
-      timestamp: serverTimestamp(),
+      created_at: serverTimestamp(),
     });
     setTweetMessage("");
     setTweetImage("");
