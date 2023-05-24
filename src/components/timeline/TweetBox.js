@@ -17,14 +17,13 @@ function TweetBox() {
   const [tweetMessage, setTweetMessage] = useState("");
   const [tweetImage, setTweetImage] = useState("");
   // ここはログイン機能を実装したら変更する
-  const [user_id, setUser_id] = useState("it_engineer");
+  const [userId, setUserId] = useState("it_engineer");
   const [userData, setUserData] = useState({});
 
-  // ユーザー情報を取得する
   useEffect(() => {
     const getUserData = async () => {
       const user = collection(db, "users");
-      const q = query(user, where("user_id", "==", user_id));
+      const q = query(user, where("userId", "==", userId));
       const userSnapshot = await getDocs(q);
       const userData = userSnapshot.docs.map((doc) => doc.data());
       setUserData(userData[0]);
@@ -33,11 +32,11 @@ function TweetBox() {
   }, [])
   
   const sendTweet = (e) => {
-    const tweet_id = uuidv4();
+    const tweetId = uuidv4();
     e.preventDefault();
-    const tweetRef = doc(db, "tweets", tweet_id);
+    const tweetRef = doc(db, "tweets", tweetId);
     setDoc(tweetRef, {
-      user_id: user_id,
+      userId: userId,
       text: tweetMessage,
       image: tweetImage,
       created_at: serverTimestamp(),

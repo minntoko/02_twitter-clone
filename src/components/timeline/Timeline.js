@@ -57,9 +57,8 @@ function Timeline() {
       {/* Post */}
       <FlipMove>
         {posts.map((post, index) => (
-          console.log(post),
           <Post
-            key={index}
+            key={post.tweetId}
             id={post.tweetId}
             userId={post.userId}
             displayName={post.displayName}

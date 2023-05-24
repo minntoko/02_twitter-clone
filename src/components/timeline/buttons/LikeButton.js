@@ -1,6 +1,6 @@
 import { FavoriteBorder } from "@mui/icons-material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   addDoc,
   doc,
@@ -10,32 +10,32 @@ import {
   query,
   serverTimestamp,
   where,
+  onSnapshot,
 } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 import db from "../../../firebase";
 import "./Buttons.css";
 
+// id, userIdを受け取る
 const LikeButton = ({ id, userId }) => {
-  // いいねボタンの状態をデータベースからuser_idとtweet_idを利用してツイートごとに判定する
-  // いいねの数をデータベースからtweet_idを利用してツイートごとにカウントする
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
-  useEffect(() => {
     const getLikeData = async () => {
+      let likeDatas = [];
       const likeCollection = collection(db, "likes");
-      const q = query(likeCollection, where("tweet_id", "==", id));
-      const likeSnapshot = await getDocs(q);
-      const likeDatas = likeSnapshot.docs.map((doc) => doc.data());
-      setLikeCount(likeDatas.length);
-      // いいねボタンの状態を判定する
-      likeDatas.forEach((likeData) => {
-        if (likeData.user_id === userId) {
-          setLike(true);
-        }
+      const q = query(likeCollection, where("tweet_id", "==", id)); // エラー発生
+      onSnapshot(q, (querySnapshot) => {
+        likeDatas = querySnapshot.docs.map((doc) => doc.data());
+        setLikeCount(likeDatas.length);
+        likeDatas.forEach((likeData) => {
+          if (likeData.user_id === userId && likeData.tweet_id === id) {
+            console.log(`いいねしています${id}`);
+            setLike(true);
+          }
+        });
       });
     };
     getLikeData();
-  }, [id, userId]);
 
   const likeSwitch = () => {
     setLike(like ? false : true);
@@ -44,20 +44,18 @@ const LikeButton = ({ id, userId }) => {
   const likeCountUp = async () => {
     if (like) {
       setLikeCount(likeCount - 1);
-      // いいねを取り消したときにデータベースから削除する
       const likeCollection = collection(db, "likes");
       const q = query(
         likeCollection,
         where("tweet_id", "==", id),
         where("user_id", "==", userId)
       );
-
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach(async (document) => {
         const userLikeRef = doc(db, "likes", document.id);
         await deleteDoc(userLikeRef);
       });
-
+      setLike(false);
     } else {
       setLikeCount(likeCount + 1);
       addDoc(collection(db, "likes"), {
