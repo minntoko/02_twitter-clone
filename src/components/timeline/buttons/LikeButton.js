@@ -1,6 +1,7 @@
 import { FavoriteBorder } from "@mui/icons-material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { memo, useState } from "react";
+import { memo, useState, useContext } from "react";
+import { UserDataContext } from "../../providers/userDataProvider";
 import {
   addDoc,
   doc,
@@ -16,20 +17,21 @@ import { v4 as uuidv4 } from "uuid";
 import db from "../../../firebase";
 import "./Buttons.css";
 
-// id, userIdを受け取る
-const LikeButton = memo (({ id, userId }) => {
+
+const LikeButton = memo (({ tweetId }) => {
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
+  const { userData } = useContext(UserDataContext);
+
     const getLikeData = async () => {
       let likeDatas = [];
       const likeCollection = collection(db, "likes");
-      const q = query(likeCollection, where("tweet_id", "==", id)); // エラー発生
+      const q = query(likeCollection, where("tweetId", "==", tweetId));
       onSnapshot(q, (querySnapshot) => {
         likeDatas = querySnapshot.docs.map((doc) => doc.data());
         setLikeCount(likeDatas.length);
         likeDatas.forEach((likeData) => {
-          if (likeData.user_id === userId && likeData.tweet_id === id) {
-            console.log(`いいねしています${id}`);
+          if (likeData.userId === userData.userId && likeData.tweetId === tweetId) { // ここのユーザーIDはログインしているユーザーのID
             setLike(true);
           }
         });
@@ -47,8 +49,8 @@ const LikeButton = memo (({ id, userId }) => {
       const likeCollection = collection(db, "likes");
       const q = query(
         likeCollection,
-        where("tweet_id", "==", id),
-        where("user_id", "==", userId)
+        where("tweetId", "==", tweetId),
+        where("userId", "==", userData.userId)
       );
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach(async (document) => {
@@ -59,9 +61,9 @@ const LikeButton = memo (({ id, userId }) => {
     } else {
       setLikeCount(likeCount + 1);
       addDoc(collection(db, "likes"), {
-        like_id: uuidv4(),
-        user_id: userId,
-        tweet_id: id,
+        likeId: uuidv4(),
+        userId: userData.userId,
+        tweetId: tweetId,
         created_at: serverTimestamp(),
       });
     }

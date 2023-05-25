@@ -1,6 +1,6 @@
 import { VerifiedUser } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
-import React, { useState, forwardRef, memo, useContext } from "react";
+import React, { useState, forwardRef, memo } from "react";
 import RetweetButton from "./buttons/RetweetButton";
 import LikeButton from "./buttons/LikeButton";
 import RepryButton from "./buttons/RepryButton";
@@ -8,7 +8,7 @@ import ShareButton from "./buttons/ShareButton";
 import "./Post.css";
 
 const Post = forwardRef(
-  ({ displayName, userName, verified, text, icon, image }, ref) => {
+  ({ displayName, userName, verified, text, icon, image, tweetId, userId }, ref) => {
     const [retweet, setRetweet] = useState(false);
     const retweetSwitch = () => {
       setRetweet(retweet ? false : true);
@@ -39,7 +39,7 @@ const Post = forwardRef(
           <div className="post__footer">
             <RepryButton />
             <RetweetButton retweet={retweet} retweetSwitch={retweetSwitch} />
-            <LikeButton />
+            <LikeButton tweetId={tweetId} userId={userId} />
             <ShareButton />
           </div>
         </div>

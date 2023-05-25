@@ -7,7 +7,6 @@ import "./Timeline.css";
 
 const Timeline = memo(() => {
     const tweets = useContext(TweetContext);
-  console.log(tweets);
   return (
     <div className="timeline">
       <div className="timeline__header">
@@ -18,6 +17,8 @@ const Timeline = memo(() => {
         {tweets.map((tweet) => (
           <Post
             key={tweet.tweetId}
+            tweetId={tweet.tweetId}
+            userId={tweet.userId}
             displayName={tweet.displayName}
             userName={tweet.userName}
             verified={tweet.verified}
