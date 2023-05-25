@@ -1,3 +1,4 @@
+import { useEffect, useState, createContext } from "react";
 import {
   collection,
   query,
@@ -7,7 +8,6 @@ import {
   getDocs,
 } from "firebase/firestore";
 import db from "../../firebase";
-import { useEffect, useState, createContext } from "react";
 
 const TweetContext = createContext();
 const TweetProvider = ({ children }) => {
@@ -18,21 +18,21 @@ const TweetProvider = ({ children }) => {
 
     onSnapshot(q, async (queryTweets) => {
       const newTweetPromises = queryTweets.docs.map(async (doc) => {
-        const pueryTweet = doc.data();
+        const queryTweet = doc.data();
         const tweetId = doc.id;
 
         const userRef = collection(db, "users");
-        const tweetQ = query(userRef, where("userId", "==", pueryTweet.userId));
+        const tweetQ = query(userRef, where("userId", "==", queryTweet.userId));
         const userSnapshot = await getDocs(tweetQ);
         const userData = userSnapshot.docs.map((doc) => doc.data());
         return {
           tweetId: tweetId,
-          userId: pueryTweet.user_id,
+          userId: queryTweet.userId,
           displayName: userData[0].displayName,
-          userName: userData[0].user_id,
+          userName: userData[0].userId,
           verified: userData[0].verified,
-          text: pueryTweet.text,
-          image: pueryTweet.image,
+          text: queryTweet.text,
+          image: queryTweet.image,
           icon: userData[0].icon,
         };
       });
@@ -42,7 +42,7 @@ const TweetProvider = ({ children }) => {
     });
   }, []);
   return (
-    <TweetContext.Provider value={{ tweets, setTweets }}>
+    <TweetContext.Provider value={ tweets }>
       {children}
     </TweetContext.Provider>
   );

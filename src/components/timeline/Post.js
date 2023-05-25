@@ -1,6 +1,6 @@
 import { VerifiedUser } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
-import React, { useState, forwardRef, memo } from "react";
+import React, { useState, forwardRef, memo, useContext } from "react";
 import RetweetButton from "./buttons/RetweetButton";
 import LikeButton from "./buttons/LikeButton";
 import RepryButton from "./buttons/RepryButton";
@@ -8,9 +8,7 @@ import ShareButton from "./buttons/ShareButton";
 import "./Post.css";
 
 const Post = forwardRef(
-  // tweetID, userId, displayName, userName, verified, text, icon, imageを受け取る
-  ({}, ref) => {
-    // useStateでいいねの状態を保持
+  ({ displayName, userName, verified, text, icon, image }, ref) => {
     const [retweet, setRetweet] = useState(false);
     const retweetSwitch = () => {
       setRetweet(retweet ? false : true);
