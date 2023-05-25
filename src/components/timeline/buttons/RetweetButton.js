@@ -1,8 +1,8 @@
 import { Repeat } from "@mui/icons-material";
-import { useState } from "react";
+import { memo, useState } from "react";
 import "./Buttons.css";
 
-const RetweetButton = ({ retweet, retweetSwitch }) => {
+const RetweetButton = memo(({ retweet, retweetSwitch }) => {
   const [retweetCount, setRetweetCount] = useState(0);
   const retweetCountUp = () => {
     if (retweet) {
@@ -28,6 +28,6 @@ const RetweetButton = ({ retweet, retweetSwitch }) => {
       <span className={`retweetButton__retweetCount ${retweetCount !== 0 ? "likeButton__likeActive" : ""}`}>{retweetCount}</span>
     </div>
   );
-};
+});
 
 export default RetweetButton;

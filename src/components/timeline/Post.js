@@ -1,6 +1,6 @@
 import { VerifiedUser } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
-import React, { useState, forwardRef } from "react";
+import React, { useState, forwardRef, memo } from "react";
 import RetweetButton from "./buttons/RetweetButton";
 import LikeButton from "./buttons/LikeButton";
 import RepryButton from "./buttons/RepryButton";
@@ -50,4 +50,4 @@ const Post = forwardRef(
   }
 );
 
-export default Post;
+export default memo(Post);

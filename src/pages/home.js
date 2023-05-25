@@ -1,11 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 /** @jsxImportSource @emotion/react */
 import { jsx, css } from "@emotion/react";
 import Sidevar from "../components/sidebar/Sidebar";
 import Timeline from "../components/timeline/Timeline";
 import Widgets from "../components/widget/Widgets";
 
-function Home() {
+const Home = memo(() => {
   const homeStyles = css`
     display: flex;
     justify-content: center;
@@ -30,6 +30,6 @@ function Home() {
       <Widgets />
     </div>
   );
-}
+});
 
 export default Home;

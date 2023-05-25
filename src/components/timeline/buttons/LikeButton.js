@@ -1,6 +1,6 @@
 import { FavoriteBorder } from "@mui/icons-material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useState } from "react";
+import { memo, useState } from "react";
 import {
   addDoc,
   doc,
@@ -17,7 +17,7 @@ import db from "../../../firebase";
 import "./Buttons.css";
 
 // id, userIdを受け取る
-const LikeButton = ({ id, userId }) => {
+const LikeButton = memo (({ id, userId }) => {
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
     const getLikeData = async () => {
@@ -91,6 +91,6 @@ const LikeButton = ({ id, userId }) => {
       </span>
     </div>
   );
-};
+});
 
 export default LikeButton;

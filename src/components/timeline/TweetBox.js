@@ -1,5 +1,5 @@
 import { Avatar, Button } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import {
   collection,
   doc,
@@ -13,7 +13,7 @@ import { v4 as uuidv4 } from "uuid";
 import db from "../../firebase";
 import "./TweetBox.css";
 
-function TweetBox() {
+const TweetBox = memo(() => {
   const [tweetMessage, setTweetMessage] = useState("");
   const [tweetImage, setTweetImage] = useState("");
   // ここはログイン機能を実装したら変更する
@@ -76,6 +76,6 @@ function TweetBox() {
       </form>
     </div>
   );
-}
+});
 
 export default TweetBox;

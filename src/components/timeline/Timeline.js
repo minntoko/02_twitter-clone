@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import "./Timeline.css";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
@@ -13,18 +13,18 @@ import {
 import db from "../../firebase";
 import FlipMove from "react-flip-move";
 
-function Timeline() {
+const Timeline = memo(() => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const tweetsRef = collection(db, "tweets");
     const q = query(tweetsRef, orderBy("created_at", "desc"));
-  
+
     onSnapshot(q, async (queryTweets) => {
       const newTweetPromises = queryTweets.docs.map(async (doc) => {
         const tweet = doc.data();
         const tweetId = doc.id;
-  
+
         const userRef = collection(db, "users");
         const tweetQ = query(userRef, where("user_id", "==", tweet.user_id));
         const userSnapshot = await getDocs(tweetQ);
@@ -40,7 +40,7 @@ function Timeline() {
           icon: userData[0].icon,
         };
       });
-  
+
       const newTweets = await Promise.all(newTweetPromises);
       setPosts(newTweets);
     });
@@ -73,6 +73,6 @@ function Timeline() {
       </FlipMove>
     </div>
   );
-}
+});
 
 export default Timeline;

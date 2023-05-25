@@ -1,11 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 /** @jsxImportSource @emotion/react */
 import { jsx, css } from "@emotion/react";
 import Sidevar from "../components/sidebar/Sidebar";
 import Mypage from "../components/profile/Mypage.js";
 import Widgets from "../components/widget/Widgets";
 
-function Profile() {
+const Profile = memo(() => {
   const profStyles = css`
     display: flex;
     justify-content: center;
@@ -30,6 +30,6 @@ function Profile() {
       <Widgets />
     </div>
   );
-}
+});
 
 export default Profile;
