@@ -1,15 +1,17 @@
 import "./App.css";
-import Sidevar from "./components/sidebar/Sidebar";
-import Timeline from "./components/timeline/Timeline";
-import Widgets from "./components/widget/Widgets";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from "./pages/home";
+import Profile from "./pages/profile";
 
 function App() {
   return (
-    <div className="app">
-      <Sidevar />
-      <Timeline />
-      <Widgets />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </Router>
   );
 }
 

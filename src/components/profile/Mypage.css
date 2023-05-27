@@ -1,0 +1,53 @@
+.mypage {
+  min-width: 598px;
+  max-width: 598px;
+  margin: 0 30px 0 0;
+  border-right: 1px solid var(--twitter-background);
+  overflow-y: scroll;
+}
+
+.mypage__header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 16px;
+}
+
+.mypage__backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  text-decoration: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 30px;
+  margin-left: -8px;
+  transition: all .15s;
+}
+
+.mypage__backBtn:hover {
+  background-color: var(--twitter-background);
+}
+
+.mypage__backBtn > .MuiSvgIcon-root {
+  font-size: 1.3em;
+}
+
+.mypage__displayName {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.mypage__displayName h2 {
+  margin: 0;
+  font-size: 1.3em;
+}
+
+.mypage__displayName span {
+  font-size: 0.85em;
+  color: rgb(83, 100, 113);
+}

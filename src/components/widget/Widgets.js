@@ -1,5 +1,5 @@
 import { Search } from "@mui/icons-material";
-import React from "react";
+import React, { memo } from "react";
 import {
   TwitterTimelineEmbed,
   TwitterShareButton,
@@ -7,7 +7,7 @@ import {
 } from "react-twitter-embed";
 import "./Widgets.css";
 
-function Widgets() {
+const Widgets = memo(() => {
   return (
     <div className="widgets">
       <div className="widgets__serchContainer">
@@ -25,7 +25,8 @@ function Widgets() {
         <TwitterTimelineEmbed
           sourceType="profile"
           screenName="AppStoreJP"
-          options={{ height: 400 }}
+          options={{ height: 400, Width: 160 }}
+
         />
         <div className="widgets__shareButton">
           <TwitterShareButton
@@ -36,6 +37,6 @@ function Widgets() {
       </div>
     </div>
   );
-}
+});
 
 export default Widgets;

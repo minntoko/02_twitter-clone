@@ -1,52 +1,36 @@
-import React, { useState, useEffect } from "react";
-import "./Timeline.css";
+import {  memo, useContext } from "react";
+import { TweetContext } from "../providers/tweetProvider";
+import FlipMove from "react-flip-move";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
-import {
-  collection,
-  query,
-  orderBy,
-  onSnapshot,
-} from "firebase/firestore";
-import db from "../../firebase";
-import FlipMove from "react-flip-move";
+import "./Timeline.css";
 
-function Timeline() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    // リアルタイムでデータを取得する
-    const postData = collection(db, "posts");
-    const q = query(postData, orderBy("timestamp", "desc"));
-    onSnapshot(q, (querySnapshot) => {
-      setPosts(querySnapshot.docs.map((doc) => doc.data()));
-    });
-  }, []);
-
+const Timeline = memo(() => {
+    const tweets = useContext(TweetContext);
   return (
     <div className="timeline">
-      {/* Header */}
       <div className="timeline__header">
         <h2>ホーム</h2>
       </div>
-      {/* TweetBox */}
       <TweetBox />
-      {/* Post */}
       <FlipMove>
-        {posts.map((post, index) => (
+        {tweets.map((tweet) => (
           <Post
-            key={index}
-            displayName={post.displayName}
-            userName={post.userName}
-            verified={post.verified}
-            text={post.text}
-            avatar={post.avatar}
-            image={post.image}
+            key={tweet.tweetId}
+            tweetId={tweet.tweetId}
+            userId={tweet.userId}
+            displayName={tweet.displayName}
+            userName={tweet.userName}
+            verified={tweet.verified}
+            text={tweet.text}
+            icon={tweet.icon}
+            image={tweet.image}
+            className="timeline__post"
           />
         ))}
       </FlipMove>
     </div>
   );
-}
+});
 
 export default Timeline;
