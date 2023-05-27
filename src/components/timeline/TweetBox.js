@@ -11,17 +11,24 @@ const TweetBox = memo(() => {
   const [tweetImage, setTweetImage] = useState("");
   const { userData } = useContext(UserDataContext);
 
+  const isMessageEmpty = tweetMessage.trim() === "";
+  const isImageEmpty = tweetImage.trim() === "";
+  const tweetEmpty = isMessageEmpty && isImageEmpty;
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
     }
-    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+    if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
       sendTweet(e);
     }
   };
 
   const sendTweet = (e) => {
     e.preventDefault();
+    if ( tweetEmpty ) {
+      return;
+    }
     const tweetId = uuidv4();
     const tweetRef = doc(db, "tweets", tweetId);
     setDoc(tweetRef, {
@@ -57,7 +64,10 @@ const TweetBox = memo(() => {
             onKeyDown={handleKeyDown}
           />
           <Button
-            className="tweetBox__tweetButton"
+            className={`tweetBox__tweetButton ${
+              tweetEmpty && "tweetBox__tweetButton--disabled"
+            }`}
+            disableRipple={tweetEmpty}
             type="submit"
             onClick={sendTweet}
           >
