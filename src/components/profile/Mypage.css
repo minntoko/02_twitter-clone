@@ -6,6 +6,10 @@
   overflow-y: scroll;
 }
 
+.mypage::-webkit-scrollbar {
+  display: none;
+}
+
 .mypage__header {
   display: flex;
   align-items: center;
