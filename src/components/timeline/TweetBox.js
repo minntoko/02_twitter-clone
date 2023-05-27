@@ -1,11 +1,7 @@
 import { Avatar, Button } from "@mui/material";
 import React, { useState, useContext, memo } from "react";
 import { UserDataContext } from "../providers/userDataProvider";
-import {
-  doc,
-  setDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 import db from "../../firebase";
 import "./TweetBox.css";
@@ -14,10 +10,19 @@ const TweetBox = memo(() => {
   const [tweetMessage, setTweetMessage] = useState("");
   const [tweetImage, setTweetImage] = useState("");
   const { userData } = useContext(UserDataContext);
-  
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+      sendTweet(e);
+    }
+  };
+
   const sendTweet = (e) => {
-    const tweetId = uuidv4();
     e.preventDefault();
+    const tweetId = uuidv4();
     const tweetRef = doc(db, "tweets", tweetId);
     setDoc(tweetRef, {
       userId: userData.userId,
@@ -39,6 +44,7 @@ const TweetBox = memo(() => {
             placeholder="いまどうしてる？"
             value={tweetMessage}
             onChange={(e) => setTweetMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className="tweetBox__buttons">
@@ -48,6 +54,7 @@ const TweetBox = memo(() => {
             placeholder="画像のURLを入力してください"
             value={tweetImage}
             onChange={(e) => setTweetImage(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
           <Button
             className="tweetBox__tweetButton"
