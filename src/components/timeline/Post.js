@@ -9,10 +9,6 @@ import "./Post.css";
 
 const Post = forwardRef(
   ({ displayName, userName, verified, text, icon, image, tweetId, userId }, ref) => {
-    const [retweet, setRetweet] = useState(false);
-    const retweetSwitch = () => {
-      setRetweet(retweet ? false : true);
-    };
     return (
       <div className="post" ref={ref}>
         <div className="post__avatar">
@@ -38,8 +34,8 @@ const Post = forwardRef(
           </div>
           <div className="post__footer">
             <RepryButton />
-            <RetweetButton retweet={retweet} retweetSwitch={retweetSwitch} />
-            <LikeButton tweetId={tweetId} userId={userId} />
+            <RetweetButton tweetId={tweetId} />
+            <LikeButton tweetId={tweetId} />
             <ShareButton />
           </div>
         </div>
