@@ -28,6 +28,7 @@ const LikeButton = memo (({ tweetId }) => {
       const likeCollection = collection(db, "likes");
       const q = query(likeCollection, where("tweetId", "==", tweetId));
       onSnapshot(q, (querySnapshot) => {
+        setLike(false);
         likeDatas = querySnapshot.docs.map((doc) => doc.data());
         setLikeCount(likeDatas.length);
         likeDatas.forEach((likeData) => {

@@ -28,6 +28,7 @@ const RetweetButton = memo(({ tweetId, retweetId, userId }) => {
     const retweetCollection = collection(db, "retweets");
     const q = query(retweetCollection, where("tweetId", "==", tweetId));
     onSnapshot(q, (querySnapshot) => {
+      setRetweet(false);
       retweetDatas = querySnapshot.docs.map((doc) => doc.data());
       setRetweetCount(retweetDatas.length);
       retweetDatas.forEach((retweetData) => {
@@ -49,6 +50,7 @@ const RetweetButton = memo(({ tweetId, retweetId, userId }) => {
   const retweetCountUp = async () => {
     if (retweet) {
       // リツイートしたツイートを削除
+      getRetweetData();
       if (retweetId) {
         const retweetTweetRef = doc(db, "tweets", retweetId);
         await deleteDoc(retweetTweetRef);
@@ -64,9 +66,7 @@ const RetweetButton = memo(({ tweetId, retweetId, userId }) => {
         querySnapshot.forEach(async (document) => {
           const userRetweetRef = doc(db, "tweets", document.data().retweetId);
           await deleteDoc(userRetweetRef);
-        }
-        );
-
+        });
       }
       setRetweetCount(retweetCount - 1);
       const retweetCollection = collection(db, "retweets");
@@ -81,15 +81,6 @@ const RetweetButton = memo(({ tweetId, retweetId, userId }) => {
         await deleteDoc(userRetweetRef);
       });
       setRetweet(false);
-
-      // リツイートテーブルにツイートIDとuserIdが一致するデータがなければ、ツイートを削除
-      const retweetCollection2 = collection(db, "retweets");
-      const q2 = query(retweetCollection2, where("tweetId", "==", tweetId));
-      const querySnapshot2 = await getDocs(q2);
-      if (querySnapshot2.empty) {
-        setRetweet(false);
-      }
-
     } else {
       setRetweetCount(retweetCount + 1);
       const retweetId = uuidv4();
