@@ -6,6 +6,8 @@
 .profArea__cover {
   display: block;
   height: 200px;
+  width: 598px;
+  object-fit: cover;
 }
 
 .profArea__iconBox {
