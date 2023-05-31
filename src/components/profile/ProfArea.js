@@ -1,8 +1,11 @@
 import { memo, useContext, useEffect } from "react";
 import { Avatar, Button } from "@mui/material";
 import { UserDataContext } from "../providers/userDataProvider";
-import "./ProfArea.css";
 import { useState } from "react";
+import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
+import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import "./ProfArea.css";
 
 const ProfArea = memo(() => {
   const { userData } = useContext(UserDataContext);
@@ -27,6 +30,11 @@ const ProfArea = memo(() => {
           <p>
             {formatDescription(userData.description)}
           </p>
+        </div>
+        <div className="profArea__account">
+          <span><RoomOutlinedIcon />名古屋</span>
+          <span><a href="/"><LinkOutlinedIcon />http://localhost:3000/</a></span>
+          <span><CalendarMonthOutlinedIcon />2023年5月からTwitterを利用しています</span>
         </div>
       </div>
     </div>

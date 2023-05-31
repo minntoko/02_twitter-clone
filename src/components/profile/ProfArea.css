@@ -68,3 +68,42 @@
   font-size: 0.9em;
   color: grey;
 }
+
+.profArea__account {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  word-wrap: break-word;
+  flex-shrink: 0;
+}
+
+.profArea__account > span {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+  font-size: 0.9em;
+  color: grey;
+}
+
+.profArea__account > span a {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+  color: var(--twitter-color);
+  text-decoration: none;
+}
+
+.profArea__account > span a:hover {
+  text-decoration: underline;
+}
+
+.profArea__account > span a .MuiSvgIcon-root {
+  transform: rotateZ(-45deg);
+  font-size: 1.45em;
+}
+
+.profArea__account > span .MuiSvgIcon-root {
+  color: grey;
+  font-size: 1.3em;
+  margin-right: 4px;
+}
