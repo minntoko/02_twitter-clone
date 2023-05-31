@@ -10,7 +10,13 @@
   object-fit: cover;
 }
 
+.profArea__prof {
+  position: relative;
+}
+
 .profArea__iconBox {
+  display: flex;
+  justify-content: flex-end;
   height: 71px;
   position: relative;
 }
@@ -24,6 +30,22 @@
   height: 142px;
   border-radius: 50%;
   border: 4px solid #fff;
+}
+
+.profArea__followButton {
+  color: #000 !important;
+  background-color: #fff !important;
+  font-weight: bold !important;
+  font-size: .9em !important;
+  width: auto !important;
+  border: rgb(207, 217, 222) solid 1px !important;
+  border-radius: 20px !important;
+  padding: 5px 15px !important;
+  height: auto !important;
+}
+
+.profArea__followButton:hover {
+  background-color: rgba(15, 20, 25, .1) !important;
 }
 
 .profArea__prof {

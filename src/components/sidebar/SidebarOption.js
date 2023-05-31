@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import "./SidebarOption.css";
 
 function SidebarOption({ text, Icon, IconA, route, active }) {
-  console.log(active);
   const navigate = useNavigate();
 
   const handleClickOption = () => {
