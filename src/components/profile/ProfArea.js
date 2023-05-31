@@ -36,6 +36,16 @@ const ProfArea = memo(() => {
           <span><a href="/"><LinkOutlinedIcon />http://localhost:3000/</a></span>
           <span><CalendarMonthOutlinedIcon />2023年5月からTwitterを利用しています</span>
         </div>
+        <div className="profArea__folow">
+          <a href="/">
+            <span><b>1129</b></span>
+            <span>フォロー中</span>
+          </a>
+          <a href="/">
+            <span><b>89.4万</b></span>
+            <span>フォロワー</span>
+          </a>
+        </div>
       </div>
     </div>
   );
