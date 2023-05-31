@@ -45,7 +45,7 @@
 }
 
 .profArea__followButton:hover {
-  background-color: rgba(15, 20, 25, .1) !important;
+  background-color: var(--twitter-background) !important;
 }
 
 .profArea__prof {
