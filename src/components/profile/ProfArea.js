@@ -9,11 +9,45 @@ import "./ProfArea.css";
 
 const ProfArea = memo(() => {
   const { userData } = useContext(UserDataContext);
+  const [ownTweet, setOwnTweet] = useState(true); 
+  const [reply, setReply] = useState(false); 
+  const [media, setMedia] = useState(false); 
+  const [likeTweet, setlikeTweet] = useState(false); 
+
+  const showOwnTweet = () => {
+    setOwnTweet(true);
+    setReply(false);
+    setMedia(false);
+    setlikeTweet(false);
+  };
+
+  const showReply = () => {
+    setOwnTweet(false);
+    setReply(true);
+    setMedia(false);
+    setlikeTweet(false);
+  };
+
+  const showMedia = () => {
+    setOwnTweet(false);
+    setReply(false);
+    setMedia(true);
+    setlikeTweet(false);
+  };
+
+  const showLikeTweet = () => {
+    setOwnTweet(false);
+    setReply(false);
+    setMedia(false);
+    setlikeTweet(true);
+  };
+
   const formatDescription = (description) => {
     if (!description) return null;
     const lines = description.split('\\n');
     return lines.map((line, index) => <span key={index} style={{ display: 'block' }}>{line}</span>);
   };
+
   return (
     <div className="profArea">
       <img src={`${userData.cover}`} alt="cover" className="profArea__cover" />
@@ -47,6 +81,24 @@ const ProfArea = memo(() => {
           </a>
         </div>
       </div>
+      <nav className="profArea__nav">
+        <div className={`${ownTweet && "profArea__active"}`} onClick={showOwnTweet}>
+          ツイート
+          <span className="profArea__bar"></span>
+        </div>
+        <div className={`${reply && "profArea__active"}`} onClick={showReply}>
+          返信
+          <span className="profArea__bar"></span>
+          </div>
+        <div className={`${media && "profArea__active"}`} onClick={showMedia}>
+          メディア
+          <span className="profArea__bar"></span>
+        </div>
+        <div className={`${likeTweet && "profArea__active"}`} onClick={showLikeTweet}>
+          いいね
+          <span className="profArea__bar"></span>
+        </div>
+      </nav>
     </div>
   );
 });

@@ -144,3 +144,47 @@
   font-size: 0.9em;
   color: grey;
 }
+
+.profArea__nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--twitter-background);
+}
+
+.profArea__nav > div {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  padding: 16px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color .2s ease-in-out;
+}
+
+.profArea__nav > div:hover {
+  background-color: var(--twitter-background);
+}
+
+.profArea__bar {
+  width: 56px;
+  height: 4px;
+  background-color: var(--twitter-color);
+  position: absolute;
+  transition: all .1s ease-in-out;
+  border-radius: 4px;
+  opacity: 0;
+  bottom: 0;
+}
+
+.profArea__active {
+  font-weight: bold;
+}
+
+.profArea__active > .profArea__bar {
+  opacity: 1;
+}
