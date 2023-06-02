@@ -6,6 +6,10 @@ import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import "./ProfArea.css";
+import OwnTweet from "./tweets/OwnTweet";
+import Reply from "./tweets/Reply.js";
+import Media from "./tweets/Media.js";
+import Liketweet from "./tweets/Liketweet.js";
 
 const ProfArea = memo(() => {
   const { userData } = useContext(UserDataContext);
@@ -99,6 +103,10 @@ const ProfArea = memo(() => {
           <span className="profArea__bar"></span>
         </div>
       </nav>
+      {ownTweet && <OwnTweet />}
+      {reply && <Reply />}
+      {media && <Media />}
+      {likeTweet && <Liketweet />}
     </div>
   );
 });

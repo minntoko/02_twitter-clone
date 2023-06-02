@@ -15,14 +15,12 @@ const Liketweet = () => {
   const tweets = useContext(TweetContext);
   const { userData } = useContext(UserDataContext);
   const [likeTweets, setLikeTweets] = useState([]);
-  
+
   useEffect(() => {
-    // console.log(tweets);
     const likeCollection = collection(db, "likes");
     const q = query(likeCollection, where("userId", "==", userData.userId));
     onSnapshot(q, (querySnapshot) => {
       const updatedLikeTweets = querySnapshot.docs.map((doc) => doc.data());
-      // tweetのtweetIdとlikeTweetsのtweetIdが同じものをフィルタリングする
       const filteredTweets = tweets.filter((tweet) =>
         updatedLikeTweets.some((liketweet) => tweet.tweetId === liketweet.tweetId)
       );
