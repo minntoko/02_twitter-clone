@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, memo } from "react";
 import { UserDataContext } from "../../providers/userDataProvider";
 import db from "../../../firebase";
 import Post from "../../timeline/Post";
@@ -11,7 +11,7 @@ import {
 } from "firebase/firestore";
 import "./tweets.css";
 
-const Reply = () => {
+const Reply = memo(() => {
   const { userData } = useContext(UserDataContext);
   const [tweets, setTweets] = useState([]);
   useEffect(() => {
@@ -61,6 +61,6 @@ const Reply = () => {
       ))}
     </div>
   );
-};
+});
 
 export default Reply;

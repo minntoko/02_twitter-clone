@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, memo } from "react";
 import { UserDataContext } from "../../providers/userDataProvider";
 import { TweetContext } from "../../providers/tweetProvider";
 import db from "../../../firebase";
@@ -11,7 +11,7 @@ import {
 } from "firebase/firestore";
 import "./tweets.css";
 
-const Liketweet = () => {
+const Liketweet =  memo(() => {
   const tweets = useContext(TweetContext);
   const { userData } = useContext(UserDataContext);
   const [likeTweets, setLikeTweets] = useState([]);
@@ -46,6 +46,6 @@ const Liketweet = () => {
       ))}
     </div>
   );
-};
+});
 
 export default Liketweet;
